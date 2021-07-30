@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}{% endblock %}
+{% block content %}
+
+{{u.first_name}}
+{{u.last_name}}
+{{u.email}}
+
+{% for feedback in feedbacks %}
+<h1>{{feedback.title}}</h1>
+<h2>{{feedback.content}}</h2>
+<a href="/feedback/{{feedback.id}}/update">update</a>
+<form action="/feedback/{{feedback.id}}/delete" method="POST"><input type="submit" value="delete feedback"></form>
+
+{% endfor %}
+<a href="/users/{{u.username}}/feedback/add">add feedback</a>
+<form action="/users/{{u.username}}/delete" method="POST"><input type="submit" value="delete user"></form>
+{% endblock %}
